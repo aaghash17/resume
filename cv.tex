@@ -28,7 +28,6 @@
 
 %to prevent spillover of tabular into next pages
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
@@ -42,15 +41,10 @@
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-%\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
 %for social icons
 \usepackage{fontawesome5}
@@ -83,13 +77,6 @@
     }
 
 %----------------------------------------------------------------------------------------
-%	My Custom commands
-%----------------------------------------------------------------------------------------
-
-
-
-
-%----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
@@ -115,13 +102,13 @@
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
-Languages & \normalsize{C++, Python, Java, C\#, C, Bash} \\
-Web \& Application & \normalsize{React, Node.js, REST APIs} \\
-Robotics \& Industrial & \normalsize{ROS2, OPC UA, Industrial Communication Protocols} \\
-Libraries \& Frameworks & \normalsize{STL, Boost, open62541} \\
-Tools & \normalsize{Git, Docker, CMake, MQTT} \\
-Platforms \& RTOS & \normalsize{Linux, Windows, VxWorks, Raspberry Pi} \\
-Domains & \normalsize{Robotics, Embedded Systems, Industrial Automation, Real-time Systems} \\
+Languages & C++, Python, Java, C\#, C, Bash \\
+Systems \& Robotics & ROS2, OPC UA, Industrial Communication Protocols \\
+Web Technologies & React, Node.js, REST APIs \\
+Libraries & STL, Boost, open62541 \\
+Tools & Git, Docker, CMake, MQTT \\
+Platforms \& RTOS & Linux, Windows, VxWorks, Raspberry Pi \\
+Domains & Robotics, Embedded Systems, Industrial Automation, Real-time Systems \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -130,8 +117,13 @@ Domains & \normalsize{Robotics, Embedded Systems, Industrial Automation, Real-ti
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}X r@{}}
 \textbf{PSG College of Technology} & 2014 -- 2018 \\
-B.E Robotics and Automation & Coimbatore, India\\
+B.E Robotics and Automation & Coimbatore, India \\
 \end{tabularx}
+
+%\vspace{-6pt}
+%\begin{tabularx}{\linewidth}{@{}X@{}}
+%{\footnotesize \textbf{Relevant Coursework:} Embedded \& Real-Time Systems, Image Processing, Industrial Networking, Artificial Intelligence}
+%\end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
@@ -150,12 +142,11 @@ long long line of blah blah that will wrap when the table fills the column width
 \end{joblong}
   
 %Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
+%\section{Projects}
+%\begin{tabularx}{\linewidth}{ @{}l r@{} }
+%\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+%\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the %column width long long line of blah blah that will wrap when the table fills the column width %long long line of blah blah that will wrap when the table fills the column width long long line %of blah blah that will wrap when the table fills the column width}  \\
+%\end{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	CERTIFICATIONS
@@ -165,9 +156,11 @@ long long line of blah blah that will wrap when the table fills the column width
 \begin{tabularx}{\linewidth}{@{}l r@{}}
 \textbf{Certified ScrumMaster} -- Scrum Alliance & \href{https://aaghash17.github.io/files/AaghashR-ScrumAlliance_CSM_Certificate.pdf}{\faLink} \\
 \end{tabularx}
+
 %----------------------------------------------------------------------------------------
 %	Last Updated
 %----------------------------------------------------------------------------------------
+
 \vfill
 \center{\footnotesize Last updated: \today}
 
