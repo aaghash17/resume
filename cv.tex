@@ -77,6 +77,12 @@
     }
 
 %----------------------------------------------------------------------------------------
+%	MY CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\contact}[3]{\href{#1}{\raisebox{-0.05\height}#2\ #3}}
+
+%----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
@@ -89,12 +95,12 @@
 %----------------------------------------------------------------------------------------
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Aaghash R} \\[7.5pt]
-\href{https://github.com/aaghash17}{\raisebox{-0.05\height}\faGithub\ aaghash.r} \ $|$ \ 
-\href{https://linkedin.com/in/aaghashr}{\raisebox{-0.05\height}\faLinkedin\ aaghashr} \ $|$ \ 
-%\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:aaghashr@yahoo.com}{\raisebox{-0.05\height}\faEnvelope \ aaghashr@yahoo.com} \ $|$ \ 
-\href{tel:+91-9865377119}{\raisebox{-0.05\height}\faMobile \ +91-9865377119} \\
+\Huge{Aaghash R} \\[6pt]
+\contact{https://github.com/aaghash17}{\faGithub}{aaghash.r} \ $|$ \ 
+\contact{https://linkedin.com/in/aaghashr}{\faLinkedin}{aaghashr} \ $|$ \ 
+%\contact{https://mysite.com}{\faGlobe}{mysite.com} \ $|$ \
+\contact{mailto:aaghashr@yahoo.com}{\faEnvelope}{aaghashr@yahoo.com} \ $|$ \ 
+\contact{tel:+91-9865377119}{\faMobile}{+91-9865377119} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
