@@ -79,8 +79,12 @@
 %----------------------------------------------------------------------------------------
 %	MY CUSTOM COMMANDS
 %----------------------------------------------------------------------------------------
+\newcommand{\spacing}{0pt}
 
 \newcommand{\contact}[3]{\href{#1}{\raisebox{-0.05\height}#2\ #3}}
+\newcommand{\skill}[2]{#1 & #2 \\[\spacing]}
+
+\newcommand{\certificate}[3]{\textbf{#1} -- #2 & \href{#3}{\faLink} \\[\spacing]}
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -108,13 +112,13 @@
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
-Languages & C++, Python, Java, C\#, C, Bash \\
-Systems \& Robotics & ROS2, OPC UA, Industrial Communication Protocols \\
-Web Technologies & React, Node.js, REST APIs \\
-Libraries & STL, Boost, open62541 \\
-Tools & Git, Docker, CMake, MQTT \\
-Platforms \& RTOS & Linux, Windows, VxWorks, Raspberry Pi \\
-Domains & Robotics, Embedded Systems, Industrial Automation, Real-time Systems \\
+\skill{Languages}{C++, Python, Java, C\#, C, Bash}
+\skill{Systems \& Robotics}{ROS2, OPC UA, Industrial Communication Protocols}
+\skill{Web Technologies}{React, Node.js, REST APIs}
+\skill{Libraries}{STL, Boost, open62541}
+\skill{Tools}{Git, Docker, CMake, MQTT}
+\skill{Platforms \& RTOS}{Linux, Windows, VxWorks, Raspberry Pi}
+\skill{Domains}{Robotics, Embedded Systems, Industrial Automation, Real-time Systems}
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -122,8 +126,8 @@ Domains & Robotics, Embedded Systems, Industrial Automation, Real-time Systems \
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}X r@{}}
-\textbf{PSG College of Technology} & 2014 -- 2018 \\
-B.E Robotics and Automation & Coimbatore, India \\
+\textbf{PSG College of Technology} & Coimbatore, India \\[\spacing]
+B.E Robotics and Automation &  2014 -- 2018 \\
 \end{tabularx}
 
 %\vspace{-6pt}
@@ -160,7 +164,7 @@ long long line of blah blah that will wrap when the table fills the column width
 
 \section{Certifications}
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\textbf{Certified ScrumMaster} -- Scrum Alliance & \href{https://aaghash17.github.io/files/AaghashR-ScrumAlliance_CSM_Certificate.pdf}{\faLink} \\
+\certificate{Certified ScrumMaster}{Scrum Alliance}{https://aaghash17.github.io/files/AaghashR-ScrumAlliance_CSM_Certificate.pdf}
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
