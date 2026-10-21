@@ -10,4 +10,4 @@ This is a repository to store and deploy automatically my resume by using GitHub
 
 ### Reference
 
-This repository and its build action were cloned from [jitinnair1](https://github.com/jitinnair1/autoCV) template
+This repository and its build action were based on [jitinnair1](https://github.com/jitinnair1/autoCV) template
