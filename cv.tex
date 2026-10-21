@@ -1,56 +1,15 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-
 %----------------------------------------------------------------------------------------
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-% article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
-\usepackage{parskip} 	
+\usepackage{parskip}
 
-%other packages for formatting
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -67,7 +26,6 @@
 
 %to prevent spillover of tabular into next pages
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
@@ -81,46 +39,56 @@
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
 %for social icons
 \usepackage{fontawesome5}
 
-%debug page outer frames
-%\usepackage{showframe}
+%----------------------------------------------------------------------------------------
+%	COMMANDS
+%----------------------------------------------------------------------------------------
 
+\newcommand{\cvspacing}{3pt}
+\newcommand{\linkicon}{\fontsize{7}{7}\selectfont\faLink}
 
-% job listing environments
-\newenvironment{jobshort}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
+\newcommand{\contact}[3]{\href{#1}{\raisebox{-0.05\height}#2\ #3}}
 
-\newenvironment{joblong}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
-    }
-    {
-    \end{itemize}
-    \end{minipage}    
-    }
+\newcommand{\skill}[2]{#1 & #2 \\[\cvspacing]}
 
+\newcommand{\company}[2]{\textbf{#1} & #2 \\[\cvspacing]}
+
+\newcommand{\designation}[2]{\textbf{#1} & #2 \\[\cvspacing]}
+
+\newcommand{\designationpoints}[1]{
+\begin{itemize}[
+    leftmargin=*,
+    itemsep=\cvspacing,
+    topsep=0pt,
+    parsep=0pt,
+    partopsep=0pt,
+]
+#1
+\end{itemize}
+}
+
+\let\achievementpoints\designationpoints
+
+\newcommand{\certificate}[3]{\textbf{#1} #2 & \href{#3}{\linkicon} \\[\cvspacing]}
+
+%----------------------------------------------------------------------------------------
+%	SECTION TOGGLE
+%----------------------------------------------------------------------------------------
+
+\newif\ifshowproficiencytest
+\newif\ifshowpublication
+\newif\ifshowlastupdate
+
+\showproficiencytestfalse
+\showpublicationfalse
+\showlastupdatefalse
 
 
 %----------------------------------------------------------------------------------------
@@ -135,83 +103,207 @@
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Aaghash R} \\[6pt]
+\contact{https://github.com/aaghash17}{\faGithub}{aaghash.r} \ $|$ \ 
+\contact{https://linkedin.com/in/aaghashr}{\faLinkedin}{aaghashr} \ $|$ \ 
+%\contact{https://mysite.com}{\faGlobe}{mysite.com} \ $|$ \
+\contact{mailto:aaghashr@yahoo.com}{\faEnvelope}{aaghashr@yahoo.com} \ $|$ \ 
+\contact{tel:+91-9865377119}{\faMobile}{+91-9865377119} \\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+
+\section{Professional Summary}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+Senior Software Engineer with 7+ years of experience in Robotics, Industrial Automation, Industrial Communication, and IIoT systems. Expertise in C, C++, Python, ROS, Embedded Systems, OPC UA, MQTT and Machine Vision with strong experience in scalable industrial software development, robotics integration, and communication frameworks.
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
-
-%Interests/ Keywords/ Summary
-\section{Summary}
-This CV can also be automatically compiled and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
-
 %Experience
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
-  
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\company{ABB Robotics}{Bangalore, India}
+\designation
+{Senior Software Engineer -- R\&D Robotics}
+{Oct 2023 -- Present}
 \end{tabularx}
+\designationpoints{
+\item Actively developing and integrating ROS2 interfaces into ABB's robotics software framework to enable seamless interoperability with robotic applications.
+\item Developing a ROS2 robot driver providing direct access to robot motion interfaces over OPC UA, enabling real-time communication and control.
+\item Architected the migration from a proprietary OPC UA stack to the open62541 SDK
+\item Own the investigation and resolution of customer-reported Salesforce issues across three industrial communication products, improving product reliability and customer support.
+\item Reduced production defects by \textbf{20\%} through regression testing, root-cause analysis, and corrective actions.
+\item Increased team productivity by \textbf{30\%} by driving Agile development practices and Scrum ceremonies.
+}
 
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\company{DiFACTO Robotics and Automation}{Bangalore, India}
+\designation
+{Senior Engineer - Robotics}
+{Aug 2022 - Sep 2023}
 \end{tabularx}
+\designationpoints{
+\item Led development of robotics automation and machine vision applications for industrial manufacturing systems.
+\item Implemented vision-guided robotic correction systems for EV battery pack welding automation.
+\item Delivered automation solutions for international solar panel inspection systems deployed in Malaysia.
+}
+
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\designation
+{Development Engineer - Technology Development}
+{Dec 2020 - Jul 2022}
+\end{tabularx}
+\designationpoints{
+\item Developed vision software using C++, Python, OpenCV, and Qt for inspection, barcode detection, robot guidance, and analytics.
+\item Built OPC UA-based IIoT dashboards for real-time robot monitoring and production analytics.
+\item Designed ROS-to-PLC communication interfaces enabling AMR navigation and industrial integration.
+}
+
+
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\company{Harita Seating Systems Ltd}{Hosur, India}
+\designation
+{Senior Engineer - Central Production Engineering}
+{Aug 2019 -- Nov 2020}
+\end{tabularx}
+\designationpoints{
+\item Developed robotic automation solutions focused on manufacturing productivity improvement.
+\item Collaborated on autonomous system deployment and robotic integration projects.
+}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\designation
+{Graduate Engineer Trainee - Central Production Engineering}
+{Aug 2018 -- Jul 2019}
+\end{tabularx}
+\designationpoints{
+\item Built real-time robot productivity monitoring dashboards using SQL and Windows applications.
+\item Performed robot process analysis and optimization for production efficiency.
+}
 
 %----------------------------------------------------------------------------------------
-%	PUBLICATIONS
+%	Professional Achievements
 %----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+\section{Professional Achievements}
+\achievementpoints{
+\item Received a customer achievement award from \textbf{Fanuc} for delivering an automated generator rotor assembly handling solution supporting \textbf{200+ product variants}, achieving \textbf{0.1 mm positioning accuracy} using a dual-robot system integrated with machine vision.
+\item Conducted a Proof of Concept comparing a proprietary motion planning solution with \textbf{MoveIt2}, achieving a \textbf{15\% improvement} in planning performance and validating it as a viable framework for robotic manipulation and path planning.
+\item Led the design and development of a novel robotics Proof of Concept currently under patent review, with technical details withheld due to confidentiality and intellectual property requirements.
+\item Reduced OPC UA licensing costs by \textbf{\$130K} over three years by leading the migration from a proprietary OPC UA stack to open62541.
+\item Developed a scalable IIoT Gateway supporting \textbf{1,000+} concurrent industrial device connections with \textbf{99.9\%} uptime using OPC UA and MQTT.
+
+}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
 \section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+
+\skill{Programming Languages}
+{C, C++, Python, Java, C\#}
+
+\skill{Robotics \& Middleware}
+{ROS2, OPC UA, MQTT, Industrial Communication Protocols}
+
+\skill{Computer Vision \& AI}
+{OpenCV, Machine Vision, Vision-guided Robotics, Robot Perception}
+
+\skill{Industrial Robotics}
+{Fanuc, ABB, KUKA, Epson, Motoman, Kawasaki}
+
+\skill{Industrial Applications}
+{Pick and Place, Arc Welding, Spot Welding, Resistance Welding, Machine Tending, Gluing, Sealing, BIW Welding}
+
+\skill{Web Technologies}
+{React, Node.js, REST APIs}
+
+\skill{Tools}
+{Git, Docker, CMake, MQTT, Visual Studio, RobotStudio}
+
+\skill{Platforms}
+{Linux, Windows, VxWorks, Raspberry Pi, NVIDIA Jetson}
+
+\skill{Domains}
+{Robotics, Embedded Systems, Industrial Automation, IIoT, Real-time Systems}
+
+
 \end{tabularx}
 
+%----------------------------------------------------------------------------------------
+%	CERTIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Certifications}
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+
+\certificate{Certified ScrumMaster}{-- Scrum Alliance}{https://aaghash17.github.io/files/AaghashR-ScrumAlliance_CSM_Certificate.pdf}
+
+\certificate{Machine Learning -- Stanford University}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/YDHNLADJWRBS}
+
+\certificate{Design Patterns -- University of Alberta}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/P9IACCAP5ROE}
+
+\certificate{Object-Oriented Design -- University of Alberta}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/SPTBWQBSAJ38}
+
+\certificate{Software Architecture -- University of Alberta}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/UIXQB6V4GDRB}
+
+\certificate{Service-Oriented Architecture -- University of Alberta}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/P43PDK6SVYDX}
+
+%\certificate{Industrial IoT on Google Cloud -- Google}{-- Coursera}{https://in.coursera.org/account/accomplishments/verify/4F7A6VUPTW6C}
+
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\textbf{PSG College of Technology} & Coimbatore, India \\[\cvspacing]
+B.E Robotics and Automation &  2014 -- 2018 \\
+\end{tabularx}
+
+%\vspace{-6pt}
+%\begin{tabularx}{\linewidth}{@{}X@{}}
+%{\footnotesize \textbf{Relevant Coursework:} Embedded \& Real-Time Systems, Image Processing, Industrial Networking, Artificial Intelligence}
+%\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+%	Proficiency test
+%----------------------------------------------------------------------------------------
+\ifshowproficiencytest
+\section{Proficiency test}
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+\certificate{IELTS}{Overall : 6.5 | Listening : 7.0 | Reading : 6.5 | Writing : 6.0 | Speaking : 6.5}{https://aaghash17.github.io/files/ielts_result.pdf}
+\end{tabularx}
+\fi
+
+%----------------------------------------------------------------------------------------
+%	Publication
+%----------------------------------------------------------------------------------------
+\ifshowpublication
+\section{Publication}
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+\certificate{Automation of SlotInsulating Machine in Stators}
+{}{https://aaghash17.github.io/files/1040-3163-2-PB.pdf}
+\end{tabularx}
+\fi
+
+
+%----------------------------------------------------------------------------------------
+%	Last Updated
+%----------------------------------------------------------------------------------------
+\ifshowlastupdate
 \vfill
 \center{\footnotesize Last updated: \today}
+\fi
 
 \end{document}
